@@ -31,10 +31,11 @@ def get_attractions():
         } for attraction in attractions]
 
         total_pages = (total_count + per_page - 1) // per_page
-        current_page = page + 1
+        
+        # current_page = page + 1
 
         response = {
-            "nextPage": current_page + 1 if current_page < total_pages else None, 
+            "nextPage": page + 1 if page < total_pages else None, 
             "data": serialized_attractions,
         }
         # raise Exception("Something went wrong")
