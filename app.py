@@ -1,8 +1,10 @@
-from flask import *
-app=Flask(__name__)
-app.config["JSON_AS_ASCII"]=False
-app.config["TEMPLATES_AUTO_RELOAD"]=True
+from flask import Flask, render_template
+from app import create_app
 
+app = create_app()
+
+
+# 是否可以放在 view 資料夾中
 # Pages
 @app.route("/")
 def index():
@@ -17,4 +19,7 @@ def booking():
 def thankyou():
 	return render_template("thankyou.html")
 
-app.run(host="0.0.0.0", port=3000)
+
+
+if __name__ == '__main__':
+	app.run(host="0.0.0.0", port=3000, debug=True)
