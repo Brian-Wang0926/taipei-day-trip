@@ -62,7 +62,7 @@
     border-radius: 5px 0 0 5px;
     display: inline;
     padding: 15px;
-
+    outline: none;
 
     /* 輸入的文字 */
     font-weight: 500;

@@ -31,9 +31,21 @@ getMrtList()
 const arrowLeft = document.getElementById('arrow-left');
 const arrowRight = document.getElementById('arrow-right');
 const mrtList = document.getElementById('mrt-list');
-const scrollAmount = 1000;
+let scrollAmount = calculateScrollAmount();
+
+function calculateScrollAmount(){
+    let mrtListWidth = mrtList.offsetWidth;
+    console.log("!!", mrtListWidth/2)
+
+    return mrtListWidth / 2 ;
+}
+
+window.addEventListener('resize', () => {
+    scrollAmount = calculateScrollAmount();
+});
 
 function ArrowClick(direction){
+    console.log("~",scrollAmount)
     if(direction === 'left'){
         mrtList.scrollLeft -= scrollAmount;
     }else{
