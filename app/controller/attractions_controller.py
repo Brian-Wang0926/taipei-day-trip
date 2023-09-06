@@ -15,7 +15,6 @@ def get_attractions():
 
         per_page = 12
         attractions = attractions_query.all()
-        # attractions_pagination = attractions_query.paginate(page=page, per_page=per_page, error_out=False)
 
         serialized_attractions = [{
             "id": attraction.id,
@@ -31,14 +30,13 @@ def get_attractions():
         } for attraction in attractions]
 
         total_pages = (total_count + per_page - 1) // per_page
-        
-        # current_page = page + 1
+
 
         response = {
-            "nextPage": page + 1 if page < total_pages else None, 
+            "nextPage": page + 1 if page + 1 < total_pages else None, 
             "data": serialized_attractions,
         }
-        # raise Exception("Something went wrong")
+
         return jsonify(response)
 
     except Exception as e:

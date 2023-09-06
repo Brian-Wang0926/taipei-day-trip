@@ -1,11 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>首頁</title>
-</head>
-<body>
-    <h1>這是首頁</h1>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="css/index.css">
+{% endblock %}
+
+{% block title %}台北一日遊{% endblock %}
+
+{% block body %}
+    <!-- hero section -->
+    <div id="welcome">
+        <div id="wel-container">
+            <div id="slogan-1">
+                <div>輕鬆享受台北一日悠閒</div>
+            </div>
+
+            <div id="slogan-2">
+                <div>探索每個角落，體驗城市的深度旅遊行程</div>
+            </div>
+
+            <form id="search-bar">
+                <input type="text" placeholder="輸入景點名稱查詢" name="keyword" id="keyword-input">
+                <button type="submit">
+                    <img src="img/icon_search.png">
+                </button>
+            </form>
+        </div>
+        <div id="hero-img">
+            <img src="img/welcome.png">
+        </div>
+    </div>
+
+    <!-- main -->
+    <div id="main">
+        <!-- list bar -->
+        <div class="list-bar">
+            <div class="left-container">
+                <img src="img/arrow-left.png" id="arrow-left" class="arrow-image" onmouseover="this.src='img/arrow-left-hover.png';" onmouseout="this.src='img/arrow-left.png';">
+            </div>
+            <div class="mrt-list" id="mrt-list"></div>
+            <div class="right-container">
+                <img src="img/arrow-right.png" id="arrow-right"class="arrow-image" onmouseover="this.src='img/arrow-right-hover.png';" onmouseout="this.src='img/arrow-right.png';">
+            </div>
+        </div>
+
+        <!-- attractions -->
+        <div class="attractions">
+            <div class="attractions-group" id="attractions-group">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+<script src="/js/index.js"></script>
+{% endblock %}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block stylesheet %}{% endblock %}
+    <link rel="stylesheet" href="css/base.css">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+<!-- navigation -->
+    <div id="navigation"> 
+        <div id="nav-container">
+            <a href="/" id="nav-left">台北一日遊</a>
+            <div id="nav-right">
+                <button class="nav-button">預定行程</button>
+                <button class="nav-button">登入/登出</button>
+            </div>
+        </div>  
+    </div>
+
+{% block body %}{% endblock %}
+
+<!-- footer -->
+<div class="footer">
+    <div id="footer-content">COPYRIGHT &#169; 2023 台北一日遊</div>
+</div>
+<script src="/js/base.js"></script>
+{% block js %}{% endblock %}
+
+</body>
+</html>
