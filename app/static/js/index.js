@@ -32,12 +32,11 @@ const arrowLeft = document.getElementById('arrow-left');
 const arrowRight = document.getElementById('arrow-right');
 const mrtList = document.getElementById('mrt-list');
 let scrollAmount = calculateScrollAmount();
+let scrollSpeed = 10;
 
 function calculateScrollAmount(){
-    let mrtListWidth = mrtList.offsetWidth;
-    console.log("!!", mrtListWidth/2)
-
-    return mrtListWidth / 2 ;
+    let mrtListWidth = mrtList.scrollWidth;
+    return mrtListWidth * 2/3;
 }
 
 window.addEventListener('resize', () => {
@@ -45,11 +44,22 @@ window.addEventListener('resize', () => {
 });
 
 function ArrowClick(direction){
-    console.log("~",scrollAmount)
+    const currentScroll = mrtList.scrollLeft;
+    const step = scrollAmount;
+
     if(direction === 'left'){
-        mrtList.scrollLeft -= scrollAmount;
+        const targetScroll = currentScroll - step;
+        mrtList.scrollTo({
+            left: targetScroll,
+            behavior: "smooth",
+        });
+    
     }else{
-        mrtList.scrollLeft += scrollAmount;
+        const targetScroll = currentScroll + step;
+        mrtList.scrollTo({
+            left: targetScroll,
+            behavior: "smooth",
+        });
     }
 }
 arrowLeft.addEventListener('click', () => ArrowClick('left'));
