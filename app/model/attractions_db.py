@@ -14,7 +14,8 @@ class Attractions_Db:
         # 查詢資料庫資料， keyword 用來完全比對捷運站名稱、或模糊比對景點名稱的關鍵字，沒有給定則不做
         attractions_query = Attraction.query.filter(or_(
             Attraction.name.ilike(f"%{keyword}%"),
-            Attraction.mrt.ilike(f"%{keyword}%")
+            # Attraction.mrt.ilike(f"%{keyword}%")
+            Attraction.mrt == keyword
         ))
 
         total_count = attractions_query.count()

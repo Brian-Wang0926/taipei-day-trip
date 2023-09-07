@@ -24,8 +24,8 @@ class Attraction(db.Model):
         self.lat = lat
         self.lng = lng
 
-    def __repr__(self):
-        return '<Attraction %r>' % self.name
+    # def __repr__(self):
+    #     return '<Attraction %r>' % self.name
 
 class Image(db.Model):
     __tablename__ = 'images'
@@ -37,8 +37,8 @@ class Image(db.Model):
         self.attraction_id = attraction_id
         self.img = img
 
-    def __repr__(self):
-        return '<Image %r>' % self.img
+    # def __repr__(self):
+    #     return '<Image %r>' % self.img
 
 # 設定外鍵關係
 Attraction.images = db.relationship('Image', backref='attraction', lazy=True)

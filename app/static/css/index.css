@@ -1,0 +1,275 @@
+/* hero section */
+#welcome {
+    width: 100vw;
+    height: 320px;
+    margin-top: 54px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#wel-container {
+    width: 92%;
+    max-width: 1200px;
+    padding: 10px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 2;
+}
+
+#slogan-1,
+#slogan-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#slogan-1 {
+    height: 41px;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 24px;
+    color: #F8F8F8;
+    text-shadow: 0px 0px 30px #ABC;
+}
+
+#slogan-2 {
+    height: 22px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 13px;
+    color: #F8F8F8;
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+#search-bar {
+    display: flex;
+    flex-direction: row;
+}
+
+#keyword-input {
+    height: 46px;
+    width: 400px;
+    background-color: white;
+    border-style: hidden;
+    border-radius: 5px 0 0 5px;
+    display: inline;
+    padding: 15px;
+    outline: none;
+
+    /* 輸入的文字 */
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 13px;
+}
+
+#keyword-input::placeholder {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 13px;
+    color: #757575;
+}
+
+#search-bar button {
+    width: 60px;
+    height: 46px;
+    border-style: hidden;
+    background-color: #448899;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    position: relative;
+}
+
+#search-bar button:hover {
+    background-color: #29788b;
+}
+
+#search-bar button img {
+    position: absolute;
+    top: 8px;
+    left: 15px;
+}
+
+#hero-img {
+    position: absolute;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+#hero-img img {
+    height: 100%;
+    width: 100vw;
+    object-fit: cover;
+    object-position: top left;
+    
+}
+
+/* main */
+
+#main {
+    width: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-bottom: 104px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    flex: 1; 
+    
+
+}
+
+/* list bar */
+.list-bar {
+    width: 100%;
+    max-width: 1200px;
+    padding-bottom: 20px;
+    display: flex;
+}
+
+.left-container {
+    display: flex;
+    padding: 9px 0px 9px 15px;
+}
+
+.mrt-list {
+    height: 50px;
+    padding: 13px 10px;
+    display: flex;
+    align-items: center;
+    width: 1106px;    
+    white-space: nowrap; /* 防止文字折行 */
+    overflow: hidden; /* 隱藏超出寬度的內容 */
+}
+
+.mrt-div {
+    display: inline-block;
+    padding: 5px 15px;
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 13.3px;
+}
+.mrt-div:hover {
+    color: #000;
+}
+
+.right-container {
+    display: flex;
+    padding: 9px 15px 9px 0px;
+}
+
+.arrow-image, .mrt-div{
+    cursor: pointer;
+}
+
+/* attractions */
+.attractions {
+    padding: 15px;
+    max-width: 1200px;
+    height: auto;
+    /* 景點中文字 */
+    font-weight: 500;
+    font-size: 16px;
+    color: #757575;
+    width: 100%;
+}
+
+.attractions-group {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+    height: auto;
+}
+
+.main-div {
+
+    width: 100%;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid var(--secondary-color-gray-20, #E8E8E8);
+    background: var(--White, #FFF);
+    text-align: center;
+}
+.first-div{
+    position: relative;
+    width: 100%; 
+    height: 197px;  
+}
+.img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+.name {
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #FFFFFF;
+    box-sizing: border-box;
+    padding: 10px;
+    min-height: 40px;
+    line-height: 20px;
+    text-align: left;
+}
+
+.second-div {
+    display: flex;
+    padding: 10px;
+}
+.mrt, .category {
+    width: 50%;
+    height: 25px;
+}
+.mrt {
+    text-align:left;
+}
+.category {
+    text-align:right;
+}
+
+
+/* RWD */
+@media(max-width:1200px){
+    .attractions-group {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .first-div{
+        height: 215px;  
+    }
+}
+
+@media(max-width:900px){
+    .attractions-group {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width:600px){
+    #keyword-input {
+        width: 225px;
+    }
+
+    .first-div{
+        height: 235px;  
+    }
+    .attractions-group {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}

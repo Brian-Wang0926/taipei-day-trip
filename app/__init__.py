@@ -11,7 +11,8 @@ db = SQLAlchemy()
 
 def create_app():
     
-    app = Flask(__name__, instance_relative_config=True)
+    app = Flask(__name__, instance_relative_config=True, static_folder="static", static_url_path="/")
+
     app.config["JSON_AS_ASCII"]=False
     app.config["TEMPLATES_AUTO_RELOAD"]=True
     app.config['SECRET_KEY'] = 'hjshjhdjah kjshkjdhjs'
