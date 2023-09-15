@@ -9,7 +9,8 @@ const description = document.querySelector('.description');
 const address = document.querySelector('.address');
 const transport = document.querySelector('.transport');
 
-const attractionImages = document.getElementById('attraction-images');
+// const attractionImages = document.getElementById('attraction-images');
+const imagesContainer = document.getElementById('images-container');
 const arrowLeft = document.getElementById('arrow-left');
 const arrowRight = document.getElementById('arrow-right');
 
@@ -18,7 +19,6 @@ let numImages = 0;
 let images = [];
 
 const dotsContainer = document.getElementById('dots');
-
 
 // 取得景點
 async function getAttractionId(){
@@ -41,10 +41,23 @@ async function getAttractionId(){
         description.textContent = attraction.description;
         address.textContent = attraction.address;
         transport.textContent = attraction.transport;
-        attractionImages.src = images[currentImageIndex];
+        // attractionImages.src = images[currentImageIndex];
 
         document.title = attraction.name; 
         
+        // 圖片
+
+        for(let i=0; i<numImages; i++){
+            const imageContainer = document.createElement('div');
+            imageContainer.classList.add('image-container')
+
+            const attractionImages = document.createElement('img');
+            attractionImages.src = images[i];
+
+            imageContainer.appendChild(attractionImages);
+            imagesContainer.appendChild(imageContainer);
+        }
+
         generateDots();
 
     } catch(error){
@@ -71,29 +84,41 @@ function generateDots(){
 
 // 將第一張照片顯示，其他照片隱藏在邊，當點選右箭頭時跳至下一張，左箭頭跳至前一張
 arrowRight.addEventListener('click',() => {
-    currentImageIndex++;
-    if (currentImageIndex < numImages ){
-        attractionImages.src = images[currentImageIndex];
-        updateDots(currentImageIndex);
-    } else {
-        currentImageIndex = 0;
-        attractionImages.src = images[currentImageIndex];
-        updateDots(currentImageIndex);
-        // currentImageIndex = numImages - 1;
-    }          
+    currentImageIndex = (currentImageIndex + 1) % numImages;
+    updateImagesTransform();
+    updateDots(currentImageIndex);
+
+    // currentImageIndex++;
+    // if (currentImageIndex < numImages ){
+    //     attractionImages.src = images[currentImageIndex];
+    //     updateDots(currentImageIndex);
+    // } else {
+    //     currentImageIndex = 0;
+    //     attractionImages.src = images[currentImageIndex];
+    //     updateDots(currentImageIndex);
+    //     // currentImageIndex = numImages - 1;
+    // }          
 });
 
 arrowLeft.addEventListener('click', () => {
-    currentImageIndex--;
-    if (currentImageIndex >= 0 ){
-        attractionImages.src = images[currentImageIndex];
-        updateDots(currentImageIndex);
-    } else {
-        currentImageIndex = numImages - 1;
-        attractionImages.src = images[currentImageIndex];
-        updateDots(currentImageIndex);
-    }     
+    currentImageIndex = (currentImageIndex - 1 + numImages) % numImages;
+    updateImagesTransform();
+    updateDots(currentImageIndex);
+    // currentImageIndex--;
+    // if (currentImageIndex >= 0 ){
+    //     attractionImages.src = images[currentImageIndex];
+    //     updateDots(currentImageIndex);
+    // } else {
+    //     currentImageIndex = numImages - 1;
+    //     attractionImages.src = images[currentImageIndex];
+    //     updateDots(currentImageIndex);
+    // }     
 });  
+
+function updateImagesTransform(){
+    const translateX = -currentImageIndex * 100;
+    imagesContainer.style.transform = `translateX(${translateX}%)`; 
+};
 
 function updateDots(index){
     const dots = document.querySelectorAll('.dot');

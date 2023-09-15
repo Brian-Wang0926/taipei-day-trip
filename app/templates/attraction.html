@@ -9,12 +9,17 @@
 {% block body %}
     <div class="main">
         <div class="section">
+
             <div class="pic">
-                <img id="attraction-images" alt="景點照片"/>
+                <div id="images-container" class="images-container"></div>
+                <!-- <div class="slider">
+                    <img id="attraction-images" alt="景點照片"/>
+                </div> -->
                 <img src="../img/img-left-arrow.svg" id="arrow-left"/>
                 <img src="../img/img-right-arrow.svg" id="arrow-right" />
                 <div class="dots" id="dots"></div>
             </div>
+
             <div class="profile">
                 <div class="name"></div>
                 <div class="cat-mrt">
@@ -27,7 +32,6 @@
                         <span>選擇日期：</span>
                         <input type="date" id="date" name="date" placeholder="yyyy/mm/dd"  required />
                     </div>
-
                     <div class="time">
                         <span>選擇時間：</span>
                         <input type="radio" name="time" id="first-half-day" onchange="updateGuideFee()" checked> 
@@ -44,7 +48,8 @@
                 </form>
             </div>
         </div>
-        <hr>
+        <!-- <hr> -->
+        <div class="second-line"></div>
         <div class="infor">
             <div class="description"></div>           
             <div>
