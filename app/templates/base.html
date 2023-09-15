@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/base.css">
     {% block stylesheet %}{% endblock %}
-    <link rel="stylesheet" href="css/base.css">
     <title>{% block title %}{% endblock %}</title>
-</head>
+    <link rel="icon" href="/img/bus.png"/>
 <body>
 <!-- navigation -->
     <div id="navigation"> 
@@ -22,11 +22,12 @@
 {% block body %}{% endblock %}
 
 <!-- footer -->
-<div class="footer">
+<footer class="footer">
     <div id="footer-content">COPYRIGHT &#169; 2023 台北一日遊</div>
-</div>
-<script src="/js/base.js"></script>
-{% block js %}{% endblock %}
+</footer>
 
+<script src="/js/base.js"></script>
+
+{% block js %}{% endblock %}
 </body>
 </html>

@@ -32,7 +32,6 @@ const arrowLeft = document.getElementById('arrow-left');
 const arrowRight = document.getElementById('arrow-right');
 const mrtList = document.getElementById('mrt-list');
 let scrollAmount = calculateScrollAmount();
-let scrollSpeed = 10;
 
 function calculateScrollAmount(){
     let mrtListWidth = mrtList.scrollWidth;
@@ -45,6 +44,7 @@ window.addEventListener('resize', () => {
 
 function ArrowClick(direction){
     const currentScroll = mrtList.scrollLeft;
+    console.log("目前滾輪位置：", currentScroll);
     const step = scrollAmount;
 
     if(direction === 'left'){
@@ -101,12 +101,16 @@ async function getAttractions() {
         if(attractions.data.length === 0){
             attractionsGroup.innerHTML = '<p>查無資料</p>';
         }else{
-
             attractions.data.forEach(attraction => {
+            // // 創建 id 以供點擊後跳轉
+            const id = attraction.id;
 
             // 創建 main-div
             const mainDiv = document.createElement('div');
             mainDiv.className = 'main-div';
+            mainDiv.setAttribute('id', id);
+
+            mainDiv.addEventListener('click', mainDivClick);
             
             // 創建 first-div
             const firstDiv = document.createElement('div');
@@ -184,3 +188,10 @@ mrtList.addEventListener('click', (e) => {
         searchBar.dispatchEvent(new Event('submit'));
     }
 });
+
+// 偵測到點擊圖片後，跳轉到 attraction.html ,並夾帶 id
+
+function mainDivClick(e){
+    const id = e.target.closest('.main-div').getAttribute('id');
+    window.location.href = `${originURL}/attraction/${id}`;
+}

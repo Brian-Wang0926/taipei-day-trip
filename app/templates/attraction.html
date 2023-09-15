@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/css/attraction.css">
+{% endblock %}
+
+{% block title %} 景點 {% endblock %}
+
+{% block body %}
+    <div class="main">
+        <div class="section">
+            <div class="pic">
+                <img id="attraction-images" alt="景點照片"/>
+                <img src="../img/img-left-arrow.svg" id="arrow-left"/>
+                <img src="../img/img-right-arrow.svg" id="arrow-right" />
+                <div class="dots" id="dots"></div>
+            </div>
+            <div class="profile">
+                <div class="name"></div>
+                <div class="cat-mrt">
+                    <span class="category"></span><span> at </span><span class="mrt"></span>
+                </div>
+                <form class="form-container">
+                    <div class="title">訂購導覽行程</div>
+                    <div class="subtitle">以此景點為中心的一日行程，帶您探索城市角落故事</div>
+                    <div class="date">
+                        <span>選擇日期：</span>
+                        <input type="date" id="date" name="date" placeholder="yyyy/mm/dd"  required />
+                    </div>
+
+                    <div class="time">
+                        <span>選擇時間：</span>
+                        <input type="radio" name="time" id="first-half-day" onchange="updateGuideFee()" checked> 
+                        <label class="time-text">上半天</label> 
+                        <input type="radio" name="time" id="second-half-day" onchange="updateGuideFee()"> 
+                        <label class="time-text">下半天</label>
+                    </div>
+
+                    <div class="fee">導覽費用：
+                        <span id="guide-fee">新台幣 2000 元</span>
+                    </div>
+                    
+                    <button>開始預約行程</button>
+                </form>
+            </div>
+        </div>
+        <hr>
+        <div class="infor">
+            <div class="description"></div>           
+            <div>
+                <p>景點地址：</p>  
+                <span class="address"></span>
+            </div>
+            <div>
+                <p>交通方式：</p>
+                <span class="transport"></span>
+            </div>   
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block js %}<script src="/js/attraction.js"></script>{% endblock %}
+
