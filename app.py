@@ -3,8 +3,6 @@ from app import create_app
 
 app = create_app()
 
-
-# 是否可以放在 view 資料夾中
 # Pages
 @app.route("/")
 def index():

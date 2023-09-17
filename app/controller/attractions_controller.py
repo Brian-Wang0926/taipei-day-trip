@@ -31,7 +31,6 @@ def get_attractions():
 
         total_pages = (total_count + per_page - 1) // per_page
 
-
         response = {
             "nextPage": page + 1 if page + 1 < total_pages else None, 
             "data": serialized_attractions,
@@ -49,7 +48,6 @@ def get_attractions():
 
 @attractions.route('api/attraction/<int:attractionId>', methods=['GET'])
 def get_attraction(attractionId):
-
     try:
         attractions_db_instance = Attractions_Db()
         attraction = attractions_db_instance.get_single_attraction(attractionId)

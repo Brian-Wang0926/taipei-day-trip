@@ -5,40 +5,37 @@
     font-family: 'Noto Sans TC', sans-serif;
 
 }
-html {
-    scroll-behavior: smooth;
-}
+
 body {
+    position: relative; 
     min-height: 100vh;
-    display:flex; 
-    flex-direction:column; 
-    position: relative;
+    padding-bottom: 144px;
+
 }
 
 #navigation {
+
     border-bottom: 1px solid #E8E8E8;
     width: 100%;
     height: 54px;
+    top: 0;
     
     position: fixed;
-
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    z-index: 10;
+    z-index: 100;
 
 }
 
 #nav-container {
-    /* width: 92%; */
-    width: 1200px;
+    width: 100%;
     max-width: 1200px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 #nav-left {
@@ -48,7 +45,6 @@ body {
     line-height: 34px;
     text-decoration: none;
     margin-left: 10px;
-
 }
 
 
@@ -63,25 +59,9 @@ body {
     cursor: pointer;
     text-decoration: none;
 }
-通过添加margin-right: auto;和margin-left: auto;，您可以实现#nav-left和#nav-right分别靠在#nav-container的最左和最右边的效果。这样，#nav-left会紧靠左边缘，#nav-right会紧靠右边缘。
 
 
-
-
-
-
-
-.nav-button {
-    border-style: hidden;
-    background-color: white;
-    color: #666;
-    padding: 10px;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 13.3px;
-    cursor: pointer;
-    text-decoration: none;
-}
+/* 讓 footer always 在底部*/
 
 .footer {
     background-color: #757575;
@@ -89,14 +69,15 @@ body {
 
     width: 100%;
     height: 104px;
+    
     position: absolute;
-    bottom: 0;
+    bottom: 0; 
+
 
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
 }
 
 #footer-content {
@@ -107,5 +88,5 @@ body {
 @media(max-width:600px){
     #navigation{
         padding: 10px 0 10px 0px;
-    }
+    };
 }

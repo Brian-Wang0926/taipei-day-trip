@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block stylesheet %}
-<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="/css/index.css">
 {% endblock %}
 
 {% block title %}台北一日遊{% endblock %}
@@ -13,11 +13,9 @@
             <div id="slogan-1">
                 <div>輕鬆享受台北一日悠閒</div>
             </div>
-
             <div id="slogan-2">
                 <div>探索每個角落，體驗城市的深度旅遊行程</div>
             </div>
-
             <form id="search-bar">
                 <input type="text" placeholder="輸入景點名稱查詢" name="keyword" id="keyword-input">
                 <button type="submit">
@@ -51,6 +49,5 @@
         </div>
     </div>
 {% endblock %}
-{% block js %}
-<script src="/js/index.js"></script>
-{% endblock %}
+
+{% block js %}<script src="/js/index.js"></script>{% endblock %}
