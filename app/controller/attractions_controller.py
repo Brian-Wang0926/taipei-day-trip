@@ -1,6 +1,5 @@
 from flask import Blueprint, request, jsonify
 from ..model.attractions_db import Attractions_Db
-from flask_sqlalchemy import Pagination
 
 attractions = Blueprint('attractions', __name__)
 
@@ -73,7 +72,7 @@ def get_attraction(attractionId):
         }]
         
         response = { 
-        "data": serialized_attraction,
+            "data": serialized_attraction,
         }
 
         return jsonify(response)

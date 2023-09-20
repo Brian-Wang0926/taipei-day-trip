@@ -12,9 +12,117 @@ body {
     padding-bottom: 144px;
 
 }
+#login, #signup {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-170px);
+    z-index: 1000;
+    width: 340px;
+
+    flex-shrink: 0;
+    border-radius: 6px;
+    box-shadow: 0px 4px 60px 0px #AAA;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
+    overflow: hidden;
+}
+#login, #signup{
+    display: none;
+}
+.decorator-bar {
+    width: 340px;
+    height: 10px;
+    flex-shrink: 0;
+
+    background: var(--additional-color-dark-cyan-gradient-0-deg, linear-gradient(270deg, #378 0%, #6AB 100%));
+    
+}
+#login h1, #signup h1  {
+    padding: 15px;
+
+    color: var(--secondary-color-gray-70, #666);
+    text-align: center;
+
+    /* Header 3 - Blod 24(24) */
+    font-family: Noto Sans TC;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px; /* 100% */
+}
+.close-login, .close-signup {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+#login-content input, #signup-content input{
+    width: 310px;
+    height: 47px;
+    border-radius: 5px;
+    border: 1px solid var(--Gray-500, #CCC);
+    background: var(--White, #FFF);
+    margin-bottom: 15px;
+    padding: 15px;
+
+    color: var(--secondary-color-gray-50, #757575);
+
+    /* Body - Med 16(13.3) */
+    font-family: Noto Sans TC;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 13.3px; /* 83.125% */
+}
+#signup-content > input {
+    margin-bottom: 10px;
+}
+#login-button , #signup-button{
+    width: 310px;
+    height: 47px;
+    border-radius: 5px;
+    background: var(--White, #FFF);
+    cursor: pointer;
+
+    border: none;
+    background: var(--primary-color-cyan-70, #489);
+
+    color: var(--additional-color-white, #FFF);
+    text-align: center;
+
+    /* Button - Reg 19(16) */
+    font-family: Noto Sans TC;
+    font-size: 19px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; /* 84.211% */
+}
+#login-message, #signup-message {
+    margin: 10px 0;
+}
+#to-signup, #to-login {
+    color: var(--secondary-color-gray-70, #666);
+    text-align: center;
+
+    /* Body - Med 16(13.3) */
+    font-family: Noto Sans TC;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    
+    margin: 15px;
+    cursor: pointer;
+}
+#to-login {
+    margin: 10px;
+}
 
 #navigation {
-
     border-bottom: 1px solid #E8E8E8;
     width: 100%;
     height: 54px;
@@ -48,7 +156,7 @@ body {
 }
 
 
-.nav-button {
+.nav-booking-button, .nav-login-button {
     border-style: hidden;
     background-color: white;
     color: #666;

@@ -1,5 +1,5 @@
 // attraction.html 透過 fetch 抓取該 id 對應的 api
-let originURL = window.location.origin;
+// let originURL = window.location.origin;
 const currentPath = window.location.pathname;
 
 const name = document.querySelector('.name');
@@ -78,47 +78,8 @@ function generateDots(){
             dot.src = "../img/circle-check.svg";
         }
         dotsContainer.appendChild(dot);
-        console.log(numImages);
     }
 }
-
-// 將第一張照片顯示，其他照片隱藏在邊，當點選右箭頭時跳至下一張，左箭頭跳至前一張
-arrowRight.addEventListener('click',() => {
-    currentImageIndex = (currentImageIndex + 1) % numImages;
-    updateImagesTransform();
-    updateDots(currentImageIndex);
-
-    // currentImageIndex++;
-    // if (currentImageIndex < numImages ){
-    //     attractionImages.src = images[currentImageIndex];
-    //     updateDots(currentImageIndex);
-    // } else {
-    //     currentImageIndex = 0;
-    //     attractionImages.src = images[currentImageIndex];
-    //     updateDots(currentImageIndex);
-    //     // currentImageIndex = numImages - 1;
-    // }          
-});
-
-arrowLeft.addEventListener('click', () => {
-    currentImageIndex = (currentImageIndex - 1 + numImages) % numImages;
-    updateImagesTransform();
-    updateDots(currentImageIndex);
-    // currentImageIndex--;
-    // if (currentImageIndex >= 0 ){
-    //     attractionImages.src = images[currentImageIndex];
-    //     updateDots(currentImageIndex);
-    // } else {
-    //     currentImageIndex = numImages - 1;
-    //     attractionImages.src = images[currentImageIndex];
-    //     updateDots(currentImageIndex);
-    // }     
-});  
-
-function updateImagesTransform(){
-    const translateX = -currentImageIndex * 100;
-    imagesContainer.style.transform = `translateX(${translateX}%)`; 
-};
 
 function updateDots(index){
     const dots = document.querySelectorAll('.dot');
@@ -132,6 +93,24 @@ function updateDots(index){
         }
     });
 }
+// 將第一張照片顯示，其他照片隱藏在右邊，當點選右箭頭時跳至下一張，左箭頭跳至前一張
+arrowRight.addEventListener('click',() => {
+    currentImageIndex = (currentImageIndex + 1) % numImages;
+    updateImagesTransform();
+    updateDots(currentImageIndex);
+});
+
+arrowLeft.addEventListener('click', () => {
+    currentImageIndex = (currentImageIndex - 1 + numImages) % numImages;
+    updateImagesTransform();
+    updateDots(currentImageIndex);
+});  
+
+function updateImagesTransform(){
+    const translateX = -currentImageIndex * 100;
+    imagesContainer.style.transform = `translateX(${translateX}%)`; 
+};
+
 
 // 若選擇時間選下半天，則導覽費用改為2500元
 const firstHalfDay = document.getElementById('first-half-day');
