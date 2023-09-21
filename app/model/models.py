@@ -1,4 +1,6 @@
 from .. import db
+from flask_bcrypt import generate_password_hash, check_password_hash
+
 
 # 定義資料模型
 class Attraction(db.Model):
@@ -35,3 +37,20 @@ class Image(db.Model):
 
 # 設定外鍵關係
 Attraction.images = db.relationship('Image', backref='attraction', lazy=True)
+
+# 建立會員資料庫
+class User(db.Model):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255))
+    email = db.Column(db.String(255))
+    password = db.Column(db.String(255))
+
+    def __init__(self, name, email, password):
+        self.name = name
+        self.email = email
+        self.password = generate_password_hash(password).decode('utf-8')
+        
+# 建立預定景點資料庫
+
+# 建立訂單資料庫
