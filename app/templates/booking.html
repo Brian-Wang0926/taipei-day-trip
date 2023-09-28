@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+<link rel="stylesheet" href="/css/booking.css">
+{% endblock %}
+
+{% block title %} 預定行程 {% endblock %}
+
+{% block body %}
+
+<section class="main">
+    <div class="headline">您好，<p id="name"></p>，待預定的行程如下：</div>
+    <div id="no-booking-message"></div>
+    <!-- 建立所有預定行程 -->
+    <div id="booking-container">
+
+    </div>
+
+    <div class="separate-line"></div>
+
+    <div class="booking-contact">
+        <h3>您的聯絡資訊</h3>
+        <form class="booking-form">
+            <div class="name">
+                <span> 聯絡姓名：</span>
+                <input type="text" id="name_input" required/>
+            </div>
+            <div class="email">
+                <span>聯絡信箱：</span>
+                <input type="email" id="email" required/>
+            </div>
+             <div class="phone">
+                <span>手機號碼：</span>
+                <input type="number" id="phone" required/>
+             </div>
+            <p>請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</p>
+        </form>
+    </div>
+
+    <div class="separate-line"></div>
+
+    <div class="booking-payment">
+        <h3>信用卡付款資訊</h3>
+        <div class="credit-card-number">
+            <span>卡片號碼：</span>
+            <input type="password" id="credit-card-number" placeholder="**** **** ****"/>
+        </div>
+
+        <div class="credit-card-time">
+            <span>過期時間：</span>
+            <input type="password" id="credit-card-time"  placeholder="MM/YY"required/>
+        </div>
+        <div for="credit-card-password">
+            <span>驗證密碼：</span>
+            <input type="password" id="credit-card-password"  placeholder="CVV" required/>
+        </div>
+    </div>
+
+    <div class="separate-line"></div>
+
+    <div class="confirm">
+        <p id="total-price">總價：新台幣 2000 元</p>
+        <button>確認訂購並付款</button>
+    </div>
+
+</section>
+{% endblock %}
+
+{% block js %}
+<script src="/js/booking.js"></script>
+{% endblock %}

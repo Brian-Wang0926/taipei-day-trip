@@ -8,6 +8,7 @@ load_dotenv()
 db_username = os.getenv('DB_USERNAME')
 db_password = os.getenv('DB_PASSWORD')
 
+
 db = SQLAlchemy()
 
 def create_app():
@@ -17,7 +18,7 @@ def create_app():
     
     app.config["JSON_AS_ASCII"]=False
     app.config["TEMPLATES_AUTO_RELOAD"]=True
-    app.config['SECRET_KEY'] = 'hjshjhdjah kjshkjdhjs'
+    app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
     app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{db_username}:{db_password}@localhost/taipei_trip_db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -29,12 +30,15 @@ def create_app():
     from .controller.attractions_controller import attractions
     from .controller.mrts_controller import mrts
     from .controller.users_controller import users
+    from .controller.bookings_controller import bookings
     
     app.register_blueprint(attractions, url_prefix='/')
     app.register_blueprint(mrts, url_prefix='/')
     app.register_blueprint(users, url_prefix='/')
+    app.register_blueprint(bookings, url_prefix='/')
+    
 
-    from .model.models import Attraction, Image, User
+    from .model.models import Attraction, Image, User, Booking
 
     with app.app_context():
         db.create_all()

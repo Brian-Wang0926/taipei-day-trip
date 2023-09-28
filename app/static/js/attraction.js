@@ -1,7 +1,6 @@
 // attraction.html 透過 fetch 抓取該 id 對應的 api
 // let originURL = window.location.origin;
 const currentPath = window.location.pathname;
-
 const name = document.querySelector('.name');
 const category = document.querySelector('.category');
 const mrt = document.querySelector('.mrt');
@@ -17,7 +16,7 @@ const arrowRight = document.getElementById('arrow-right');
 let currentImageIndex = 0;
 let numImages = 0;
 let images = [];
-
+let attractionId;
 const dotsContainer = document.getElementById('dots');
 
 // 取得景點
@@ -44,7 +43,7 @@ async function getAttractionId(){
         // attractionImages.src = images[currentImageIndex];
 
         document.title = attraction.name; 
-        
+        attractionId = attraction.id;
         // 圖片
 
         for(let i=0; i<numImages; i++){
@@ -116,6 +115,7 @@ function updateImagesTransform(){
 const firstHalfDay = document.getElementById('first-half-day');
 const secondHalfDay = document.getElementById('second-half-day');
 const guideFee = document.getElementById('guide-fee');
+let guideFeeValue = 2000;
 
 function updateGuideFee(){
     if(firstHalfDay.checked){
@@ -125,4 +125,84 @@ function updateGuideFee(){
     }
     guideFee.textContent = `新台幣 ${guideFeeValue} 元`;
 }
+let inputDate = document.getElementById('date');
+// 計算當天
+function currentDate(){
+    const currentDate = new Date();
+
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth()+1).padStart(2,'0');
+    const day = String(currentDate.getDate()).padStart(2,'0');
+
+    const formattedDate = `${year}-${month}-${day}`;
+    inputDate.min = formattedDate;
+    inputDate.value = formattedDate;
+}
+currentDate()
+
+
+document.addEventListener('DOMContentLoaded', function(){
+    const bookingForm = document.getElementById('booking-form');
+    let selectDate;
+    
+    bookingForm.addEventListener('submit', function(e){
+        e.preventDefault();
+
+        selectDate = new Date(inputDate.value);
+
+        if(!validdateDate()){
+            return;
+        }
+        if(!userLoggedIn){
+            toggleDisplay(loginBox,'block');
+        } else {
+            createbooking();
+        }
+    });
+    
+
+    function validdateDate(){
+        if(!date){
+            alert('請選擇日期。');
+            return false
+        } 
+        return true;
+    }
+
+    async function createbooking(){
+
+        try {
+            const time = document.querySelector('input[name="time"]:checked').value;
+            const formattedDate = selectDate.toISOString().split('T')[0];
+    
+            const bookingData = {
+                attractionId:attractionId,
+                date: formattedDate,
+                time: time,
+                price: guideFeeValue
+            };
+    
+            const response = await fetch(`${originURL}/api/booking`,{
+                method: 'POST',
+                headers:{
+                    'Content-Type':'application/json',
+                    'Authorization':`Bearer ${localStorage.getItem('Token')}`
+                },
+                body: JSON.stringify(bookingData)
+            });
+
+            if(response.ok){
+                window.location.href = '/booking';
+
+                
+            } else {
+                
+                console.error('預定失敗', error);
+            }
+        } catch(e){
+            console.error('預定失敗', e.message);
+        }
+
+    }
+});
 
