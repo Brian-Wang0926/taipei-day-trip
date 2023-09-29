@@ -156,7 +156,7 @@ window.addEventListener('load', () => {
 
 function checkUserLoggedin(){
     const token = localStorage.getItem('Token');
-    return !!token;
+    return !!token; //回覆 boolean
 }
 
 // 檢查會員登入狀態流程
@@ -180,6 +180,7 @@ async function userStatus(){
         } else {
             // 如果没有 token，表示用户未登录
             userLoggedIn = false;
+
         }
     } catch(error) {
         userLoggedIn = false;
