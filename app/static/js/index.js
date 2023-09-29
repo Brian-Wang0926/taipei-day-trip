@@ -1,5 +1,5 @@
-"use strict"
-// let originURL = window.location.origin;
+// "use strict"
+
 // list-bar
 async function getMrtList() {
     try {

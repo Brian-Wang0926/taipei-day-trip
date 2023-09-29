@@ -21,31 +21,30 @@
                 <div class="cat-mrt">
                     <span class="category"></span><span> at </span><span class="mrt"></span>
                 </div>
-                <form class="form-container">
+
+                <form class="form-container" id="booking-form">
                     <div class="title">訂購導覽行程</div>
                     <div class="subtitle">以此景點為中心的一日行程，帶您探索城市角落故事</div>
                     <div class="date">
                         <span>選擇日期：</span>
-                        <input type="date" id="date" name="date" placeholder="yyyy/mm/dd"  required />
+                        <input type="date" id="date" name="date" required />
                     </div>
                     <div class="time">
                         <span>選擇時間：</span>
-                        <input type="radio" name="time" id="first-half-day" onchange="updateGuideFee()" checked> 
+                        <input type="radio" name="time" id="first-half-day" onchange="updateGuideFee()" value="morning" checked> 
                         <label class="time-text">上半天</label> 
-                        <input type="radio" name="time" id="second-half-day" onchange="updateGuideFee()"> 
+                        <input type="radio" name="time" id="second-half-day" onchange="updateGuideFee()" value="afternoon"> 
                         <label class="time-text">下半天</label>
                     </div>
 
                     <div class="fee">導覽費用：
                         <span id="guide-fee">新台幣 2000 元</span>
-                    </div>
-                    
+                    </div>   
                     <button>開始預約行程</button>
                 </form>
             </div>
         </div>
-        <!-- <hr> -->
-        <div class="second-line"></div>
+        <div class="separate-line"></div>
         <div class="infor">
             <div class="description"></div>           
             <div>

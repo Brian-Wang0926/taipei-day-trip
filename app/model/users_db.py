@@ -19,6 +19,7 @@ class Users_Db:
         return get_user_query
 
     def check_password(self, user, password):
+        print("開始確認密碼",user ,password)
         result = check_password_hash(user.password, password)
         print("check_password資料庫成功", result)
         return result
