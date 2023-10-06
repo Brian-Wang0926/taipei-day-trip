@@ -19,11 +19,17 @@ def create_app():
     app.config["JSON_AS_ASCII"]=False
     app.config["TEMPLATES_AUTO_RELOAD"]=True
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+    app.config['PARTNER_KEY'] = os.getenv('PARTNER_KEY')
+    app.config['MERCHANT_ID'] = os.getenv('MERCHANT_ID')
+
 
     app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{db_username}:{db_password}@localhost/taipei_trip_db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SQLALCHEMY_POOL_SIZE'] = 20  # 設定連接池大小
     app.config['SQLALCHEMY_POOL_TIMEOUT'] = 10  # 設定連接超時時間
+
+
+
     
     db.init_app(app)
 
@@ -31,16 +37,17 @@ def create_app():
     from .controller.mrts_controller import mrts
     from .controller.users_controller import users
     from .controller.bookings_controller import bookings
+    from .controller.orders_controller import orders
     
+    with app.app_context():
+        db.create_all()
+
     app.register_blueprint(attractions, url_prefix='/')
     app.register_blueprint(mrts, url_prefix='/')
     app.register_blueprint(users, url_prefix='/')
     app.register_blueprint(bookings, url_prefix='/')
+    app.register_blueprint(orders, url_prefix='/')
     
-
-    from .model.models import Attraction, Image, User, Booking
-
-    with app.app_context():
-        db.create_all()
+    from .model.models import Attraction, Image, User, Booking, Order
 
     return app

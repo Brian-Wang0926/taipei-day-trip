@@ -75,7 +75,7 @@ def get_attraction(attractionId):
             "data": serialized_attraction,
         }
 
-        return jsonify(response)
+        return jsonify(response), 200
 
     except Exception as e:
         response = {
