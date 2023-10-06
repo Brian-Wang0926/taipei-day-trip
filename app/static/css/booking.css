@@ -126,18 +126,18 @@
     font-style: normal;
     font-weight: 700;
 }
-.booking-contact div, .booking-payment div {
+.booking-contact div {
     margin-bottom: 15px;
 }
 
-.booking-contact span, .booking-payment span {
+.booking-contact span, .booking-payment label {
     color: var(--secondary-color-gray-70, #666);
 
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
 }
-.booking-contact input, .booking-payment input {
+.booking-contact input, .tpfield  {
     width: 202px;
     height: 38px;
     padding: 10px;
@@ -146,6 +146,10 @@
     border: 1px solid var(--Gray-300, #E8E8E8);
     background: var(--White, #FFF);
 }
+.booking-contact input:focus{
+    outline: 1px solid var(--secondary-color-gray-70, #666);
+}
+
 .booking-contact p {
     padding: 5px 0;
     color: var(--secondary-color-gray-70, #666);
@@ -154,6 +158,14 @@
     font-style: normal;
     font-weight: 700;
 }
+
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+
 .confirm {
     width: 100%;
     max-width: 1000px;
@@ -194,6 +206,15 @@
     line-height: 16px;
 }
 
+/* tappay */
+
+.invalid {
+    border: 2px solid red;
+}
+
+.valid{
+    border: 2px solid  green;
+}
 
 @media(max-width:1200px){
 

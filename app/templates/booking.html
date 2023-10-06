@@ -17,55 +17,58 @@
     </div>
 
     <div class="separate-line"></div>
-
-    <div class="booking-contact">
-        <h3>您的聯絡資訊</h3>
-        <form class="booking-form">
+    <form>
+        <div class="booking-contact">
+            <h3>您的聯絡資訊</h3>
             <div class="name">
                 <span> 聯絡姓名：</span>
-                <input type="text" id="name_input" required/>
+                <input type="text" id="contact-name" required/>
             </div>
             <div class="email">
                 <span>聯絡信箱：</span>
-                <input type="email" id="email" required/>
+                <input type="email" id="contact-email" required/>
             </div>
-             <div class="phone">
+                <div class="phone">
                 <span>手機號碼：</span>
-                <input type="number" id="phone" required/>
-             </div>
+                <input type="tel" id="contact-phone" minlength="10" maxlength="10" placeholder="0912345678" required/>
+                </div>
             <p>請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</p>
-        </form>
-    </div>
-
-    <div class="separate-line"></div>
-
-    <div class="booking-payment">
-        <h3>信用卡付款資訊</h3>
-        <div class="credit-card-number">
-            <span>卡片號碼：</span>
-            <input type="password" id="credit-card-number" placeholder="**** **** ****"/>
         </div>
-
-        <div class="credit-card-time">
-            <span>過期時間：</span>
-            <input type="password" id="credit-card-time"  placeholder="MM/YY"required/>
+    
+        <div class="separate-line"></div>
+    
+        <!-- 付款資訊： 串接 tappay -->
+        <div class="booking-payment">
+            <h3>信用卡付款資訊</h3>
+    
+            <div class="input-container card-number-group">
+                <label for="card-number"><span id="cardtype"></span>卡片號碼：</label>
+                <div class="tpfield card-number" id="card-number"></div>
+            </div>
+            <div class="input-container expiration-date-group">
+                <label for="card-expiration-date">過期時間：</label>
+                <div class="tpfield card-expiration-date" id="card-expiration-date"></div>
+            </div>          
+            <div class="input-container card-number-group">
+                <label for="card-ccv">驗證密碼：</label>
+                <div class="tpfield card-ccv" id="card-ccv"></div>
+            </div>
+    
         </div>
-        <div for="credit-card-password">
-            <span>驗證密碼：</span>
-            <input type="password" id="credit-card-password"  placeholder="CVV" required/>
+    
+        <div class="separate-line"></div>
+    
+        <div class="confirm">
+            <p id="total-price">總價：新台幣 2000 元</p>
+            <button type="submit" class="submit-button">確認訂購並付款</button>
         </div>
-    </div>
-
-    <div class="separate-line"></div>
-
-    <div class="confirm">
-        <p id="total-price">總價：新台幣 2000 元</p>
-        <button>確認訂購並付款</button>
-    </div>
+    </form>
 
 </section>
 {% endblock %}
 
 {% block js %}
+<script src="https://js.tappaysdk.com/sdk/tpdirect/v5.17.0"></script>
 <script src="/js/booking.js"></script>
+
 {% endblock %}
