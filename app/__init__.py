@@ -7,8 +7,8 @@ from flask_bcrypt import Bcrypt
 load_dotenv()
 db_username = os.getenv('DB_USERNAME')
 db_password = os.getenv('DB_PASSWORD')
-db_host = os.getenv('DB_HOST')  # RDS endpoint
-db_name = os.getenv('DB_NAME')  # Database name
+db_host = os.getenv('DB_HOST')  
+db_name = os.getenv('DB_NAME') 
 
 db = SQLAlchemy()
 

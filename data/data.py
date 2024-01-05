@@ -9,14 +9,16 @@ import json, os, re
 load_dotenv()
 db_username = os.getenv('DB_USERNAME')
 db_password = os.getenv('DB_PASSWORD')
+db_host = os.getenv('DB_HOST')  
+db_name = os.getenv('DB_NAME') 
 
 cnx_pool_config = {
     "pool_name": "my_connection_pool", 
     "pool_size": 5,
-    "host": "localhost",
-    "user": "root",
+    "host": db_host,
+    "user": db_username,
     "password": db_password,
-    "database": "taipei_trip_db",
+    "database": db_name,
     "buffered": True
 }
 
